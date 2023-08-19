@@ -1,45 +1,25 @@
-import java.util.Random;
-
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        //Declaracao de variaveis e setar posicoes do array
-        Random r = new Random();
-        int numeroMulheres = r.nextInt(1,20);
-        String[][] pessoas = new String[20][2];
+        //Inicia as variaveis de temperatura C(celsius), K(Kelvin), F(Fahrenheit), Re(Réaumur), Ra(Rankine)
+        double C,K,F,Re,Ra;
 
-        for (int i = 0; i < numeroMulheres; i++) {
-            double altMulheres = r.nextDouble(1.5,1.8);
-            pessoas[i][0] = "M";
-            pessoas[i][1] = String.valueOf(altMulheres);
-        }
-        for (int i = numeroMulheres; i <= 19; i++) {
-            double altHomens =r.nextDouble(1.6,2.2);
-            pessoas[i][0] = "H";
-            pessoas[i][1] = String.valueOf(altHomens);
-        }
+        //Instancia o scanner para logo depois receber o dado do usuario
+        System.out.println("Informe o grau em celsius");
+        Scanner teclado = new Scanner(System.in);
 
-        int qtdMulheres=0,qtdHomens=0 ;
-        double maiorPessoa=0,menorPessoa=1000000,mediaAltHomens,somaAlturaHomens=0;
+        C = teclado.nextDouble();
 
-        for (int i=0; i<20;i++){
-            if (pessoas[i][0] == "M")
-                qtdMulheres++;
-            else{
-                qtdHomens++;
-                somaAlturaHomens = somaAlturaHomens+Double.parseDouble(pessoas[i][1]);
-            }
-            if (maiorPessoa < Double.parseDouble(pessoas[i][1]))
-                maiorPessoa = Double.parseDouble(pessoas[i][1]);
-            if (menorPessoa > Double.parseDouble(pessoas[i][1]))
-                menorPessoa = Double.parseDouble(pessoas[i][1]);
-        }
-        mediaAltHomens = somaAlturaHomens/qtdHomens;
-        System.out.println("Quantidade de mulheres: "+qtdMulheres);
-        System.out.println("Quantidade de homens: "+qtdHomens);
-        System.out.println("Altura da maior pessoa: "+maiorPessoa);
-        System.out.println("Altura da menor pessoa: "+menorPessoa);
-        System.out.println("Media de altura entre os homens: "+mediaAltHomens);
+        //Realiza o calculo da formulas para apresentar em seguida para o usuario
+        F = C * 1.8 + 32;
+        K = C + 273.15;
+        Re = C * 0.8;
+        Ra = C * 1.8 + 32 + 459.67;
+
+        System.out.println("Valor em Fahrenheit: "+F);
+        System.out.println("Valor em Kelvin: "+K);
+        System.out.println("Valor em Réaumur: "+Re);
+        System.out.println("Valor em Rankine: "+Ra);
+
     }
 }
