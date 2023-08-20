@@ -6,5 +6,6 @@ Projeto para a primeira conexao com o banco, tem jeitos diferentes de fazer do q
 
 Busca realizada em uma tabela (tb_cliente) e buscando seus dados(id,nome_cliente,valor_em_conta) e imprime eles.
 
+print do resultado impresso: https://ibb.co/Pm7Lr7W
 
 Esse foi sem exercicio mesmo kk
