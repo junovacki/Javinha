@@ -1,26 +1,35 @@
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
+import java.sql.*;
+
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("Insira a quantidade de pessoas: ");
-        int qtdPessoas = teclado.nextInt();
-        double valorSalario=0,valorFinal,valorAtual;
+        Connection conn ;
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        try {
+            conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/exercicio", "root", "root");
+            String sql = "select * from tb_cliente";
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+            System.out.println("id\t\tname\t\temail");
 
-        if(qtdPessoas > 0){
-            for (int i =0; i < qtdPessoas; i++){
-                System.out.println("Insira o valor de salario do funcionario: ");
-                valorAtual = teclado.nextDouble();
-                valorSalario = valorSalario + valorAtual;
+            // Condition check
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                String nomeCliente = rs.getString("nome_cliente");
+                Double valorEmConta = rs.getDouble("valor_em_conta");
+                System.out.println(id + "\t\t" + nomeCliente
+                        + "\t\t" + valorEmConta);
             }
-            valorFinal = valorSalario / qtdPessoas;
-            System.out.println("Valor da media salarial: "+ valorFinal);
-
-        }else{
-            System.out.println("Insira um numero maior que zero");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+
 
     }
 }
