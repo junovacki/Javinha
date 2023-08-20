@@ -23,8 +23,8 @@ public class Main {
                 int id = rs.getInt("id");
                 String nomeCliente = rs.getString("nome_cliente");
                 Double valorEmConta = rs.getDouble("valor_em_conta");
-                System.out.println(id + "\t\t" + nomeCliente
-                        + "\t\t" + valorEmConta);
+                System.out.println(id + "\t\t\t" + nomeCliente
+                        + "\t\t\t" + valorEmConta);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
