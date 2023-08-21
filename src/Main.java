@@ -1,19 +1,22 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
+import java.sql.*;
+import java.util.Scanner;
+public class Main extends Model{
     public static void main(String[] args) {
-       escreverFrase("Hello World!");
-       incrementando(5);
+        ResultSet rs = Model.dadosConsulta("");
+        imprimeDados(rs);
     }
 
-    public static void escreverFrase(String frase){
-        System.out.println(frase);
-    }
-
-    public static void incrementando(int parada){
-        for (int i = 1; i <= parada; i++) {
-            String frase = "i = " + i;
-            escreverFrase(frase);
+    public static void imprimeDados(ResultSet rs){
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nomeCliente = rs.getString("nome_cliente");
+                Double valorEmConta = rs.getDouble("valor_em_conta");
+                System.out.println(id + "\t\t\t" + nomeCliente
+                        + "\t\t\t" + valorEmConta);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
