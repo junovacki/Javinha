@@ -1,6 +1,8 @@
+package Models;
+
 import java.sql.*;
-public class Model {
-    public Model(){
+public class ConsultaModel {
+    public ConsultaModel(){
 
     }
 

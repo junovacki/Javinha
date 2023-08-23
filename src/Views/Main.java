@@ -1,6 +1,10 @@
+package Views;
+
+import Controllers.IndexController;
+
 import java.util.Scanner;
 import java.sql.*;
-public class View extends Controller{
+public class Main extends IndexController {
     static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args){
@@ -42,7 +46,7 @@ public class View extends Controller{
     }
 
     public static void verificarConsultasMarcadas(){
-        ResultSet rs = Controller.consultasMarcadas();
+        ResultSet rs = IndexController.consultasMarcadas();
         try {
             System.out.println("ID consulta\t\tNome\t\tData consulta");
             while (rs.next()) {
@@ -64,13 +68,13 @@ public class View extends Controller{
         array[0] = teclado.next();
         System.out.println("Insira a data da consulta: ");
         array[1] = teclado.next();
-        Controller.criarConsulta(array);
+        IndexController.criarConsulta(array);
     }
     public static void deletarConsulta(){
         String[] array = new String[1];
         System.out.println("Insira o ID da consulta a ser removida: ");
         array[0] = teclado.next();
-        Controller.deletarConsulta(array);
+        IndexController.deletarConsulta(array);
     }
     public static void alterarConsulta(){
         String[] array = new String[3];
@@ -80,6 +84,6 @@ public class View extends Controller{
         array[1] = teclado.next();
         System.out.println("Insira a data da consulta: ");
         array[2] = teclado.next();
-        Controller.atualizarConsulta(array);
+        IndexController.atualizarConsulta(array);
     }
 }
